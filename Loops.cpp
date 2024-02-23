@@ -59,3 +59,53 @@ int main() {
 
     return 0;
 }
+
+
+//Exercise 4
+
+
+#include <iostream>
+using namespace std;
+#include <cmath>
+
+int main() {
+
+    int input;
+    int a = 1;
+
+    cout << "Enter the input for the factorial: ";
+    cin >> input;
+
+    for (int i=1; i<=input; i++) {
+        a *= i;
+        cout << i << "! = " << a << endl;
+    }
+
+    return 0;
+}
+
+
+//Exercise 5
+
+#include <iostream>
+using namespace std;
+#include <cmath>
+
+int main() {
+
+    int input, num;
+    cout << "Enter the input to print the stars **: ";
+    cin >> input;
+    int a;
+
+    for (int i=0; i<input; i++) {
+        cout << "*";
+        a++;
+        if (a == 5) {
+           cout << endl;
+           a = 0;
+        }
+    }
+
+    return 0;
+}
