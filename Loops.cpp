@@ -212,7 +212,7 @@ using namespace std;
 
 int main() {
 
-    int arr[3][3] = {};
+    char arr[3][3] = {};
     int a=1, b=1;
     int x, y;
 
@@ -241,13 +241,15 @@ int main() {
             for (int j=0; j<3; j++) {
                 if (i == x && j == y) {
                     if (b%2 != 0) {
-                        cout << 'X' << " ";
                         arr[i][j] = 'X';
+                        cout << arr[i][j] << " ";
+
                         a++;
                     }
                     else {
-                        cout << 'O' << " ";
                         arr[i][j] = 'O';
+                        cout << arr[i][j] << " ";
+
                         a++;
                     }
                 }
