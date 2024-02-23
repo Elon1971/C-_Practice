@@ -205,3 +205,65 @@ int main() {
 
     return 0;
 }
+
+#include <iostream>
+using namespace std;
+#include <cmath>
+
+int main() {
+
+    int arr[3][3] = {};
+    int a=1, b=1;
+    int x, y;
+
+    cout << "Enter the index you want to put the 'X'" << endl;
+
+    while (b <= 9) {
+        if (b%2 != 0) {
+            cout << "First Player's turn: " << endl;
+            cout << "Enter x value: ";
+            cin >> x;
+            cout << "Enter y value: ";
+            cin >> y ;
+        }
+        else {
+            cout << "Second Player's turn: " << endl;
+            cout << "Enter x value: ";
+            cin >> x;
+            cout << "Enter y value: ";
+            cin >> y ;
+        }
+
+        x--;
+        y--;
+
+        for (int i=0; i<3; i++) {
+            for (int j=0; j<3; j++) {
+                if (i == x && j == y) {
+                    if (b%2 != 0) {
+                        cout << 'X' << " ";
+                        arr[i][j] = 'X';
+                        a++;
+                    }
+                    else {
+                        cout << 'O' << " ";
+                        arr[i][j] = 'O';
+                        a++;
+                    }
+                }
+                else {
+                    cout << a++ << " ";
+                }
+            }
+            cout << endl;
+        }
+        // cout << ++x << ++y;
+        // arr[x][y] = 'X';
+
+        a=1;
+        b++;
+
+    }
+
+    return 0;
+}
