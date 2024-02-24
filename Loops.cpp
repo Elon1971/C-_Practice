@@ -114,97 +114,6 @@ int main() {
 
 // Exercise 6
 
-// Write a program that prints out in the console a simple representation of 3x3 plane. The plane
-// should be filled with numbers from 1 to 9 (stored in 3x3 array representing x,y coordinates of
-// the plane).
-
-
-
-//     1     2     3
-
-
-
-//     4     5     6
-
-
-
-//     7     8     9
-
-
-// The value from coordinate (1, 1) is 1 (array[0][0]).
-
-#include <iostream>
-using namespace std;
-#include <cmath>
-
-int main() {
-
-    int arr[3][3] = {};
-    int a=1, b=1;
-    int x, y;
-
-    cout << "Enter the index you want to put the 'X'" << endl;
-
-
-
-
-    while (b <= 9) {
-        if (b%2 != 0) {
-            cout << "First Player's turn: " << endl;
-            cout << "Enter x value: ";
-            cin >> x;
-            cout << "Enter y value: ";
-            cin >> y ;
-
-            x--;
-            y--;
-
-            for (int i=0; i<3; i++) {
-                for (int j=0; j<3; j++) {
-                    if (x == i && y == j) {
-                        cout << 'X' << " ";
-
-                    }
-                    else {
-                        cout << a++ << " ";
-                    }
-                }
-                cout << endl;
-            }
-            arr[x][y] = 'X';
-        }
-        else {
-            cout << "Second Player's turn: " << endl;
-            cout << "Enter x value: ";
-            cin >> x;
-            cout << "Enter y value: ";
-            cin >> y ;
-
-            x--;
-            y--;
-
-            for (int i=0; i<3; i++) {
-                for (int j=0; j<3; j++) {
-                    if (x == i && y == j) {
-                        cout << 'O' << " ";
-
-                    }
-                    else {
-                        cout << a++ << " ";
-                    }
-                }
-                cout << endl;
-            }
-            arr[x][y] = 'O';
-        }
-        a=0;
-        b++;
-
-    }
-
-
-    return 0;
-}
 
 #include <iostream>
 using namespace std;
@@ -213,8 +122,15 @@ using namespace std;
 int main() {
 
     char arr[3][3] = {};
-    int a=1, b=1;
+    int b=1, c=1;
+    char a = 49;
     int x, y;
+
+    for (int i=0; i<3; i++) {
+        for (int j=0; j<3; j++) {
+            arr[i][j] = a++;
+        }
+    }
 
     cout << "Enter the index you want to put the 'X'" << endl;
 
@@ -233,7 +149,6 @@ int main() {
             cout << "Enter y value: ";
             cin >> y ;
         }
-
         x--;
         y--;
 
@@ -243,29 +158,22 @@ int main() {
                     if (b%2 != 0) {
                         arr[i][j] = 'X';
                         cout << arr[i][j] << " ";
-
-                        a++;
+                        c++;
                     }
                     else {
                         arr[i][j] = 'O';
                         cout << arr[i][j] << " ";
-
-                        a++;
+                        c++;
                     }
                 }
                 else {
-                    cout << a++ << " ";
+                    cout << arr[i][j] << " ";
                 }
             }
             cout << endl;
         }
-        // cout << ++x << ++y;
-        // arr[x][y] = 'X';
-
-        a=1;
+        c=1;
         b++;
-
     }
-
     return 0;
 }
