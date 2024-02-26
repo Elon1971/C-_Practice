@@ -112,7 +112,7 @@ using namespace std;
 
 int a = 2;
 float b = 2.22;
-string c = "Yash is a good boy";
+string c = "\"Yash is a good boy\"";
 
 void variableType(int a) {
     cout << a << " is of integer type." << endl;
