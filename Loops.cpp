@@ -114,20 +114,26 @@ int main() {
 
 // Exercise 6
 
-
 #include <iostream>
+#include <fstream>
 using namespace std;
-#include <cmath>
 
 int main() {
-
     char arr[3][3] = {};
-    int b=1, c=1;
+    int b = 1, c = 1;
     char a = 49;
     int x, y;
+    char winner = ' ';
+    int player1Wins = 0, player2Wins = 0;
 
-    for (int i=0; i<3; i++) {
-        for (int j=0; j<3; j++) {
+    ifstream inFile("win_counts.txt");
+    if (inFile.is_open()) {
+        inFile >> player1Wins >> player2Wins;
+        inFile.close();
+    }
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
             arr[i][j] = a++;
         }
     }
@@ -135,27 +141,27 @@ int main() {
     cout << "Enter the index you want to put the 'X'" << endl;
 
     while (b <= 9) {
-        if (b%2 != 0) {
+        if (b % 2 != 0) {
             cout << "First Player's turn: " << endl;
             cout << "Enter x value: ";
             cin >> x;
             cout << "Enter y value: ";
-            cin >> y ;
+            cin >> y;
         }
         else {
             cout << "Second Player's turn: " << endl;
             cout << "Enter x value: ";
             cin >> x;
             cout << "Enter y value: ";
-            cin >> y ;
+            cin >> y;
         }
         x--;
         y--;
 
-        for (int i=0; i<3; i++) {
-            for (int j=0; j<3; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 if (i == x && j == y) {
-                    if (b%2 != 0) {
+                    if (b % 2 != 0) {
                         arr[i][j] = 'X';
                         cout << arr[i][j] << " ";
                         c++;
@@ -172,12 +178,38 @@ int main() {
             }
             cout << endl;
         }
-        c=1;
+        c = 1;
         b++;
     }
-    char coice;
-    cout << "Who has won: 1 for player 1 and 2 for player 2";
-    cin >> coice;
-    cout << "Player " << coice << " has won" << endl;
+
+    char choice;
+    cout << "Who has won: 1 for player 1 and 2 for player 2: ";
+    cin >> choice;
+
+    if (choice == '1') {
+        winner = 'X';
+        player1Wins++;
+    } else if (choice == '2') {
+        winner = 'O';
+        player2Wins++;
+    }
+
+    ofstream outFile("win_counts.txt");
+    if (outFile.is_open()) {
+        outFile << player1Wins << " times player 1st has won" << endl << player2Wins << " times player 2nd has won" << endl;
+        if (player1Wins > player2Wins) {
+            outFile << "Player 1st is a winner" << endl;
+        }
+        else if (player2Wins > player1Wins) {
+            outFile << "Player 2nd is a winner" << endl;
+        }
+        else {
+            outFile << "No One has won" << endl;
+        }
+        outFile.close();
+    } else {
+        cout << "Unable to write to file." << endl;
+    }
+
     return 0;
 }
