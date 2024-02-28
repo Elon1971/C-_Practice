@@ -175,5 +175,9 @@ int main() {
         c=1;
         b++;
     }
+    char coice;
+    cout << "Who has won: 1 for player 1 and 2 for player 2";
+    cin >> coice;
+    cout << "Player " << coice << " has won" << endl;
     return 0;
 }
